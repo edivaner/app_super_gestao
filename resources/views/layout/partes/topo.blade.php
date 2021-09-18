@@ -3,6 +3,9 @@
     <div class="logo">
         <img src="img/logo.png">
     </div>
+    <div class="texto-topo">
+        Super Gestão
+    </div>
     
     <div class="menu">
         <ul>
