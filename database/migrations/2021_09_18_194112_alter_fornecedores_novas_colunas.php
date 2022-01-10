@@ -30,10 +30,11 @@ class AlterFornecedoresNovasColunas extends Migration
     {
         //
         schema::table('fornecedores', function(Blueprint $table){
-            $table->dropColumn('uf');
-            $table->dropColumn('email');
-            $table->dropColumn('site');
-            $table->dropColumn(['uf','email', 'site']);
+            // $table->dropColumn('uf');
+            // $table->dropColumn('email');
+            // $table->dropColumn('site');
+            
+            // $table->dropColumn(['uf','email', 'site']);
         });
     }
 }
