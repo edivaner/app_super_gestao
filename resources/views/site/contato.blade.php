@@ -12,7 +12,7 @@
     
     <div class="informacao-pagina">
         <div class="contato-principal">
-            @component('layout.componentes.form_contato', ['corBorda' => 'borda-preta'])
+            @component('layout.componentes.form_contato', ['corBorda' => 'borda-preta', 'motivo_contatos' => $motivo_contatos])
                 <p>A nossa equipe  analisará sua mensagem</p>
                 <p>tempo de resposta em 24 horas.</p>
             @endcomponent
