@@ -48,19 +48,34 @@ class ContatoController extends Controller
     }
 
     public function salvar(Request $request){
-        /*$contato = new SiteContato();
-        $contato->create($request->all());*/
+        // SiteContato::create($request->all());
 
-        $request->validate([
-            'nome'           => 'required|min:3|max:40', //Permitir no minimo 3 e no maximo 40 caracteres
-            'telefone'       => 'required',
-            'emial'          => 'required',
-            'motivo_contato' => 'required',
-            'mensagem'       => 'required|max:2000'
-        ]);
+        $request->validate(
+            [
+                'nome'               => 'required|min:3|max:40|unique:site_contatos', //Permitir no minimo 3 e no maximo 40 caracteres |unico na tabela site_contatos
+                'telefone'           => 'required',
+                'email'              => 'email',
+                'motivo_contatos_id' => 'required',
+                'mensagem'           => 'required|max:2000'
+            ],
+            [
+                // 'nome.required'      => 'O nome precisa ser preenchido',
+                'nome.min'           => 'O nome precisa ter no mínimo 3 caracteres',
+                'nome.max'           => 'O nome precisa ter no máximo 40 caracteres',
+                'nome.unique'        => 'Já existe um registro com este nome',
+                'telefone.required'  => 'O telefone precisa ser preenchido',
+                // 'email.required'     => 'O email precisa ser preenchido',
+                'motivo_contatos_id.required' => 'Selecione o motivo do contato',
+                'mensagem.required'  => 'Mensagem precisa ser preenchida',
+                'mensagem.max'       => 'Mensagem precisa ter no maximo 2000 caracteres',
+
+                'required'          => 'O campo :attribute precisa ser preenchido'
+            ]
+        );
         
         $contato = new SiteContato();
         $contato->create($request->all());
 
+        return redirect()->route('site.index');
     }
 }
