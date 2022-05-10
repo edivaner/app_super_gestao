@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        @include('layout.partes.topo')
+        @include('app.layouts.partials.topo')
 
         @yield('conteudo')
     </body>
