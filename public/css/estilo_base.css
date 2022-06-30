@@ -216,3 +216,20 @@ button:hover {
     position: absolute;
     width: 20px;
 }
+
+.pagination li{
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination ul{
+    list-style-type: none;
+}
+
+.pagination .active{
+    cursor: pointer;
+}
+
+.pagination .page-link:hover{
+    font-size: 15px;
+}
