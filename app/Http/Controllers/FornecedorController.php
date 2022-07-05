@@ -18,8 +18,8 @@ class FornecedorController extends Controller
                                 ->where('uf', 'like', '%'.$request->input('uf').'%')
                                 ->where('email', 'like', '%'.$request->input('email').'%')
                                 ->paginate(2);
-        // dd($fornecedor);
-        return view('app.fornecedor.listar', ['fornecedores'=>$fornecedor, 'request'=>$request->all()]);
+                                
+        return view('app.fornecedor.listar', ['fornecedores'=>$fornecedor, 'request'=>$request->all(), 'msg'=>$request->msg]);
     }
 
     public function adicionar(Request $request ){
@@ -74,7 +74,18 @@ class FornecedorController extends Controller
         $idFornecedor = $request->id;
 
         $fornecedor = Fornecedor::find($idFornecedor);
-        // dd($fornecedor);
+
         return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg'=>$request->msg]);
+    }
+
+    public function excluir($id){
+        $fornecedor = Fornecedor::find($id); 
+        $delete = $fornecedor->delete();
+
+        if($delete){
+            $errorMsg = "Fornecedor excluido com sucesso!";
+        }
+
+        return redirect()->route('app.fornecedor.listar', ['msg'=>$errorMsg]);
     }
 }
