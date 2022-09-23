@@ -7,7 +7,7 @@
         @csrf  
 @endif
         <input type="hidden" name="id" value="">
-        <input type="text" name="produto_id" value='{{ $produto_detalhe->nome ?? old('produto_id')}}' placeholder="Id do produto" class="borda-preta">
+        <input type="text" name="produto_id" value='{{ $produto_detalhe->id ?? old('produto_id')}}' placeholder="Id do produto" class="borda-preta">
         {{ $errors->has("produto_id") ? $errors->first('produto_id') : '' }}
 
         <input type="text" name="comprimento" value='{{$produto_detalhe->comprimento ?? old('comprimento')}}' placeholder="Comprimento" class="borda-preta">
